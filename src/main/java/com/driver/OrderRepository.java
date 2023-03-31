@@ -100,7 +100,7 @@ public class OrderRepository {
         partnerDB.remove(partnerId);
         pairDB.remove(partnerId);
         for(Order order : orderList){
-            orderDB.remove(order.getId());
+            //orderDB.remove(order.getId());
             orderPartnerPair.remove(order.getId());
         }
     }
