@@ -25,7 +25,6 @@ public class OrderRepository {
     }
 
     public void addOrderPartnerPair(String orderId, String partnerId) {
-
         orderPartnerPair.put(orderId,partnerId);
         HashSet <Order> hs = pairDB.get(partnerId);
         if(hs == null){
@@ -118,6 +117,8 @@ public class OrderRepository {
             hs.remove(order);
         }
         pairDB.put(partnerId,hs);
+        DeliveryPartner partner = partnerDB.get(partnerId);
+        partner.setNumberOfOrders(partner.getNumberOfOrders()-1);
     }
 
 
