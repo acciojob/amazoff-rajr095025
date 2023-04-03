@@ -17,7 +17,10 @@ public class OrderRepository {
     HashMap<String,String> orderPartnerPair = new HashMap<>();
     HashMap<String, HashSet<Order>> pairDB = new HashMap<>();
     public void addOrder(Order order) {
-        orderDB.put(order.getId(),order);
+        String key = order.getId();
+        if(key != null)
+            orderDB.put(key, order);
+        //orderDB.put(order.getId(),order);
     }
 
     public void addPartner(DeliveryPartner deliveryPartner) {
