@@ -14,7 +14,7 @@ public class OrderService {
         orderRepository.addOrder(order);
     }
 
-    public void addPartner(DeliveryPartner deliveryPartner) {
+    public void addPartner(String deliveryPartner) {
         orderRepository.addPartner(deliveryPartner);
     }
 
