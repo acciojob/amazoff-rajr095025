@@ -39,7 +39,13 @@ public class OrderRepository {
     }
 
     public DeliveryPartner getPartnerById(String partnerId) {
-        return partnerDB.get(partnerId);
+        DeliveryPartner deliveryPartner = null;
+
+        if(partnerDB.containsKey(partnerId))
+            deliveryPartner = partnerDB.get(partnerId);
+
+        return deliveryPartner;
+        //return partnerDB.get(partnerId);
     }
 
     public Integer getOrderCountByPartnerId(String partnerId) {
@@ -64,7 +70,18 @@ public class OrderRepository {
     }
 
     public Integer getCountOfUnassignedOrders() {
-        return orderDB.size() - orderPartnerPair.size();
+        Integer countOfOrders = 0;
+
+        List<String> list = new ArrayList<>(orderDB.keySet());
+
+        for(String st : list){
+            if(!orderPartnerPair.containsKey(st))
+                countOfOrders += 1;
+        }
+
+        return countOfOrders;
+
+        //return orderDB.size() - orderPartnerPair.size();
     }
 
     public Integer getOrdersLeftAfterGivenTimeByPartnerId(String time, String partnerId) {
