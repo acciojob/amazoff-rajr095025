@@ -28,6 +28,9 @@ public class OrderRepository {
     }
 
     public void addOrderPartnerPair(String orderId, String partnerId) {
+        if(!orderDB.containsKey(orderId) && !partnerDB.containsKey(partnerId)){
+            return;
+        }
         orderPartnerPair.put(orderId,partnerId);
         HashSet <Order> hs = pairDB.get(partnerId);
         if(hs == null){
